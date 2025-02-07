@@ -16,3 +16,4 @@ class Horse {
 
 public:
 	Horse(const std::string& name) : name(name), distance_traveled(0) {}	
+}
