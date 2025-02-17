@@ -1,0 +1,26 @@
+## Algorithm for OOP Horse Race
+
+# Data
+create a void "forward"
+create a void "getPosition"
+create a void "printLane" and add ints "position" and "name"
+create a void "begin"
+
+create a Horse class
+have "position" as private class
+add "getPosition" to horse
+make "setPosition" int
+add "forward" int with "position" int as variable
+add "coinFlip" variable
+add all data to public class
+
+
+create a Race class
+have "Horse race[5]" as private class
+make "length" int
+make "Race" with "length" int as variable
+
+add "printLane" with ints "position" and "name" as variables
+add "begin"
+
+add all data to public class
