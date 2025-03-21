@@ -1,137 +1,58 @@
-#include <iostream>
-#include <string>
 #include <random>
+#include <iostream>
+const int NUM_HORSES = 5;
+const int RACE_LENGTH = 15;
 
-using namespace std;
-
-void forward();
-int getPosition();
-void printLane(int position, int name);
-void begin();
-
-int keepGoing;
-int name[] = {1,2,3,4,5};
+std::random_device rd;
+std::uniform_int_distribution<int> dist(0, 1);
 
 
+void forward(int hn, int *horses){
+  if (rand() % 2 == 0) {
+        horses[hn] += 1;
+  }
+}
 
-class Horse {
+void printTrackLane(int hn, int *horses){
+  for (int i = 0; i < RACE_LENGTH; ++i) {
 
-private:
-	int position;
+    if(horses[hn] == i){
+      std::cout << hn << " ";
+    }else{
+      std::cout << ". ";
+    }
+  }
+   std::cout << std::endl;     
+}
 
-public:
-	Horse() {
-		
-		Horse::getPosition();
-	};
-	
-	int getPosition();
-	int setPosition();
-};
+bool winner(int hn, int* horses){
+    bool output = false;
 
-int forward(int position){
-
-	int coinFlip = rand() %2 +1;
-	if (coinFlip == 1){
-		position = position+1;
-	}
-	return position;
-};
-int Horse::getPosition(){
-	return position;
-};
-
-
-
-class Race {
-
-private:
-	Horse race[5];
-
-public:
-	int length;
-	
-	Race(){
-	};
-	Race(int length){
-		
-		
-	};
-	void printLane(int position, int name);
-	void begin();
-
-
-	};
-};
-
-
-
-void Race::printLane(int length, int name){
-	for (int i = 0; I <= TRACK && keepGoing == TRUE; ++i){
-		if (i == length){
-			court << name;
-		};
-		
-		if (length == TRACK)
-
-			keepGoing = FALSE;
-			cout << "\n\t\tWINNER!" << endl;
-			cout << "\t\t" << name << "!" << endl;
-			
-			return;
-	};
-	cout << '.';
-};
-
-cout << endl;
-
-};
-
-
-void Race::begin(){
-
-};
-
-
+    if(horses[hn] >= RACE_LENGTH){
+      output = true;
+    }
+    return output;
+}
 
 int main(){
-	stand(time(NULL));
-	int position = 0;
-	int length = 0;
+  int horses[] = {0, 0, 0, 0, 0};
+  bool keepGoing = true;
 
-	Race race;
-	for (int i = 0; I < 5; ++i)
-{
+  while (keepGoing){
 
-	race.length = length;
-	race.printLane(position, name[I]);
+    for (int hn = 0; hn < NUM_HORSES; hn++){
+      forward(hn, horses);
+      printTrackLane(hn, horses);
 
-}
+      if (winner(hn, horses)){
+        keepGoing = false;
+        std::cout << "Horse " << hn << " wins!" << std::endl;
+            break;
+      } // end if
+    } // end for
 
-keepGoing = TRUE;
-while (keepGoing == TRUE){
-
-	for (int i = 0; I < 1; ++i){
-	race.length = race.length + forward(position);
-	cout << "Race. length: " << race.length << endl;
-
-	race.printLane(race.length,name[0]);
-	length = 0;
-
-	cout << name[0] << " Position: " << forward(position) << endl;
-
-	}
-
-	for (int i = 0; I < 1; ++i){
-		race.length = race.length + advance(position);
-		cout << "Race.length: " << race.length << endl;
-		race.printLane(race.length,name[1]);
-		length = 0;
-		cout << name[1] << " Position: " << advance(position) << endl;
-	}
-
-	cin.ignore();
-}
-
+    std::cout << "Press enter for another turn";
+    std::cin.ignore();
+} // end while
 return 0;
 }
