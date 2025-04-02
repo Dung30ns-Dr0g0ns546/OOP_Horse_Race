@@ -1,0 +1,5 @@
+Race.class: Race.cpp
+
+
+clean:
+ rm *.class
