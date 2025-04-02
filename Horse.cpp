@@ -21,6 +21,16 @@ int forward(int position){
 	}
 	return position;
 };
+
 int Horse::getPosition(){
 	return position;
 };
+
+bool isWinner(int hn, int* horses){
+    bool output = false;
+
+    if(horses[hn] >= RACE_LENGTH){
+      output = true;
+    }
+    return output;
+}
