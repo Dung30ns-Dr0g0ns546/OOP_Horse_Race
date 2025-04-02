@@ -11,7 +11,6 @@ public:
 	
 	int getPosition();
 	int setPosition();
-};
 
 int forward(int position){
 
@@ -34,3 +33,5 @@ bool isWinner(int hn, int* horses){
     }
     return output;
 }
+};
+
