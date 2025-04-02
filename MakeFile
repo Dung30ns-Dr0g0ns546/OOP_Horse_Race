@@ -1,5 +1,10 @@
-Race.class: Race.cpp
+Race.o: Race.cpp Race.h
+ g++ -g -c Race.cpp
 
+Horse.o: Horse.cpp Horse.h
+ g++ -g -c Horse.cpp
+
+OOPHorseRace.o:
 
 clean:
  rm *.class
